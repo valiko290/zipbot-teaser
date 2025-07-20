@@ -1,49 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ZipBot — Стартуем!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZIPBOT</title>
   <style>
-    html, body {
+    * {
       margin: 0;
       padding: 0;
-      background-color: black;
-      overflow: hidden;
+      box-sizing: border-box;
     }
+
+    body, html {
+      height: 100%;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
     video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .overlay {
       position: absolute;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
     }
-    .overlay {
+
+    .zip-text {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2rem;
+      color: white;
+      font-weight: bold;
+      text-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+      animation: slideDownText 2s ease-out forwards;
+      opacity: 0;
+      pointer-events: auto;
+    }
+
+    .zip-button {
       position: absolute;
       bottom: 5%;
-      width: 100%;
-      text-align: center;
-      z-index: 2;
-    }
-    .overlay button {
-      background-color: #ffcc00;
+      right: 5%;
+      background-color: #FFD700;
+      color: black;
+      font-size: 1.1rem;
       border: none;
-      padding: 15px 30px;
-      font-size: 18px;
-      font-weight: bold;
-      border-radius: 8px;
+      border-radius: 12px;
+      padding: 14px 28px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
       cursor: pointer;
+      animation: slideDownButton 2.2s ease-out forwards;
+      opacity: 0;
+      pointer-events: auto;
+    }
+
+    @keyframes slideDownText {
+      from {
+        transform: translate(-50%, -150%);
+        opacity: 0;
+      }
+      to {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideDownButton {
+      from {
+        transform: translateY(-100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- 🎥 Фоновое видео -->
   <video autoplay muted playsinline loop>
- <source src="teaser.mp4" type="video/mp4">   
-    Your browser does not support the video tag.
+    <source src="teaser.mp4" type="video/mp4" />
+    Ваш браузер не поддерживает видео.
   </video>
+
+  <!-- 🌟 Текст + Кнопка -->
   <div class="overlay">
-    <button onclick="alert('Поехали! 🚀')">Запустить ZipBot</button>
+    <div class="zip-text">ZIPBOT — Найди быстрее ⚡</div>
+    <button class="zip-button" onclick="alert('Поехали! 🚀')">Запустить ZipBot</button>
   </div>
 </body>
 </html>
