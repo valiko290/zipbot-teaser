@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZIPBOT</title>
 
-  <!-- Импорт шрифта -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <!-- Импорт стильного цифрового шрифта -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet" />
 
   <style>
     * {
@@ -15,7 +15,7 @@
       box-sizing: border-box;
     }
 
-    body, html {
+    html, body {
       height: 100%;
       overflow: hidden;
       font-family: 'Orbitron', sans-serif;
@@ -41,6 +41,7 @@
       pointer-events: none;
     }
 
+    /* 📜 Анимированный текст: по словам */
     .zip-text {
       position: absolute;
       top: 42%;
@@ -50,15 +51,16 @@
       font-size: 3.2rem;
       color: #ffffff;
       font-weight: 600;
-      letter-spacing: 1.2px;
+      letter-spacing: 1.5px;
       pointer-events: auto;
+      white-space: nowrap;
     }
 
     .zip-text .word {
       display: inline-block;
       opacity: 0;
-      transform: translateY(-50px);
-      animation: dropWord 0.8s ease-out forwards;
+      transform: translateY(-60px);
+      animation: dropWord 0.6s ease-out forwards;
     }
 
     .delay0 { animation-delay: 0.2s; }
@@ -70,7 +72,7 @@
     @keyframes dropWord {
       from {
         opacity: 0;
-        transform: translateY(-50px);
+        transform: translateY(-60px);
       }
       to {
         opacity: 1;
@@ -78,6 +80,7 @@
       }
     }
 
+    /* 🚀 Кнопка */
     .zip-button {
       position: absolute;
       bottom: 5%;
@@ -90,7 +93,7 @@
       padding: 14px 28px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
       cursor: pointer;
-      animation: slideDownButton 1.6s ease-out forwards;
+      animation: slideDownButton 1.7s ease-out forwards;
       opacity: 0;
       pointer-events: auto;
       transition: transform 0.3s ease;
@@ -102,7 +105,7 @@
 
     @keyframes slideDownButton {
       from {
-        transform: translateY(-100px);
+        transform: translateY(-80px);
         opacity: 0;
       }
       to {
@@ -113,8 +116,9 @@
 
     @media (max-width: 600px) {
       .zip-text {
-        font-size: 2.4rem;
+        font-size: 2.3rem;
         top: 38%;
+        letter-spacing: 1.2px;
       }
 
       .zip-button {
@@ -126,13 +130,13 @@
 </head>
 
 <body>
-  <!-- 🎥 Видео-фон -->
-  <video autoplay muted playsinline loop>
+  <!-- 🌌 Видео фон -->
+  <video autoplay muted loop playsinline>
     <source src="teaser.mp4" type="video/mp4" />
     Ваш браузер не поддерживает видео.
   </video>
 
-  <!-- 🌟 Текст и кнопка -->
+  <!-- 🌟 Анимация текста и кнопки -->
   <div class="overlay">
     <div class="zip-text">
       <span class="word delay0">ZIPBOT</span>
